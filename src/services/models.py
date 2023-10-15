@@ -14,10 +14,21 @@ class PyObjectId(ObjectId):
         return str(v)
 
 class Task(BaseModel):
-    #id: Optional[PyObjectId] = Field(alias='_id')
+    id: Optional[PyObjectId] = Field(alias='_id')
     title: str
     description: Optional[str] = None
     completed: bool = False
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+
+class UpdateTask(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    completed: Optional[bool] = False
 
     class Config:
         orm_mode = True
