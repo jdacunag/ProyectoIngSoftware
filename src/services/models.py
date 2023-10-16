@@ -40,7 +40,6 @@ class User(BaseModel):
     username: str
     password: str
     email: str
-    major: str
 
     class Config:
         orm_mode = True
@@ -52,7 +51,6 @@ class UpdateUser(BaseModel):
     username: Optional[str] = None
     password: Optional[str] = None
     email: Optional[str] = None
-    major: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -63,7 +61,7 @@ class PurchaseData(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     userId: PyObjectId = Field(alias='_id')
     paymentMethod: str
-    email: str
+    email: Optional[str] = None
     dni: str
 
     class Config:
@@ -87,8 +85,8 @@ class University(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     email: str
     courses: str
-    address: str
-    description: str
+    address: Optional[str] = None
+    description: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -110,9 +108,9 @@ class Course(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     universityId: PyObjectId
     name: str
-    mode: str
+    mode: Optional[str] = None
     pensum: str
-    description: str
+    description: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -137,7 +135,7 @@ class Graduate(BaseModel):
     universityId: PyObjectId
     courseId: PyObjectId
     name: str
-    company: str
+    company: Optional[str] = None
     salary: str
     skills: str
 
