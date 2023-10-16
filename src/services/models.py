@@ -34,3 +34,27 @@ class UpdateTask(BaseModel):
         orm_mode = True
         allow_population_by_field_name = True
         json_encoders = {ObjectId: str}
+
+class User(BaseModel):
+    id: Optional[PyObjectId] = Field(alias='_id')
+    username: str
+    password: str
+    email: str
+    major: str
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+
+class UpdateUser(BaseModel):
+    username: Optional[str] = None
+    password: Optional[str] = None
+    email: Optional[str] = None
+    major: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
