@@ -58,3 +58,104 @@ class UpdateUser(BaseModel):
         orm_mode = True
         allow_population_by_field_name = True
         json_encoders = {ObjectId: str}
+
+class PurchaseData(BaseModel):
+    id: Optional[PyObjectId] = Field(alias='_id')
+    userId: PyObjectId = Field(alias='_id')
+    paymentMethod: str
+    email: str
+    dni: str
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+
+class UpdatePurchaseData(BaseModel):
+    userId: Optional[PyObjectId] = None
+    paymentMethod: Optional[str] = None
+    email: Optional[str] = None
+    dni: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+class University(BaseModel):
+    id: Optional[PyObjectId] = Field(alias='_id')
+    email: str
+    courses: str
+    address: str
+    description: str
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+class UpdateUniversity(BaseModel):
+    email: Optional[str] = None
+    courses: Optional[str] = None
+    address: Optional[str] = None
+    description: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+class Course(BaseModel):
+    id: Optional[PyObjectId] = Field(alias='_id')
+    universityId: PyObjectId
+    name: str
+    mode: str
+    pensum: str
+    description: str
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+
+class UpdateCourse(BaseModel):
+    universityId: Optional[PyObjectId] = None
+    name: Optional[str] = None
+    mode: Optional[str] = None
+    pensum: Optional[str] = None
+    description: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+class Graduate(BaseModel):
+    id: Optional[PyObjectId] = Field(alias='_id')
+    universityId: PyObjectId
+    courseId: PyObjectId
+    name: str
+    company: str
+    salary: str
+    skills: str
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
+
+
+class UpdateGraduate(BaseModel):
+    universityId: Optional[PyObjectId] = None
+    courseId: Optional[PyObjectId] = None
+    name: Optional[str] = None
+    company: Optional[str] = None
+    salary: Optional[str] = None
+    skills: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+        allow_population_by_field_name = True
+        json_encoders = {ObjectId: str}
