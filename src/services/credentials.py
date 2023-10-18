@@ -5,12 +5,12 @@ from fastapi import HTTPException
 
 credentials = APIRouter()
 
-@credentials.get('/login')
+@credentials.post('/login')
 async def login(user: UpdateUser):
     foundUser = await getUser(user)
     if foundUser:
         return 'Login successful'
-    return 'Login failed'
+    return None
 @credentials.post('/register', response_model=UpdateUser)
 async def register(user: User):
     found_user = await login(user)
