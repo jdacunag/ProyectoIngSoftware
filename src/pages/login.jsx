@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CentrarTexto from "../Components/CentrarTexto";
+import {titulo} from "../Components/Titulo";
 
 class Login extends Component {
   constructor() {
@@ -28,9 +30,9 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h2>Iniciar Sesión</h2>
+            <h2 style = {titulo}>Iniciar Sesión</h2> 
         <form>
-          <div>
+          <div  style = {{...CentrarTexto, left: '41.3%'}}>
             <label>Email:</label>
             <input
               type="text"
@@ -39,7 +41,7 @@ class Login extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <div>
+          <div  style = {{...CentrarTexto, top: '55%' }} >
             <label>Contraseña:</label>
             <input
               type="password"
@@ -48,7 +50,7 @@ class Login extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <button type="button" onClick={this.handleLogin}>Iniciar Sesión</button>
+          <button type="button" onClick={this.handleLogin} style = {{...CentrarTexto, top: '60%', height: '30px', left: '44%'}}>Iniciar Sesión</button>
         </form>
       </div>
     );
