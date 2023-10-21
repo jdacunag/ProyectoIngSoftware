@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from task import tasks
+from credentials import credentials
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
@@ -17,3 +18,4 @@ def welcome():
     return {'message': 'Default welcome message'}
 
 app.include_router(tasks)
+app.include_router(credentials)
