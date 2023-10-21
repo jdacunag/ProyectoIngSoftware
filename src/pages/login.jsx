@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import CentrarTexto from "../Components/CentrarTexto";
 import {titulo} from "../Components/Titulo";
 import React, { useState } from 'react';
@@ -37,7 +36,7 @@ function Login() {
         <div>
             <h2 style = {titulo}>Iniciar Sesión</h2>
             <form onSubmit={handleLogin}>
-                <div style = {{...CentrarTexto, left: '41.3%'}}>
+                <div style = {{...CentrarTexto, left: '40.9%'}}>
                     <label>Usuario:</label>
                     <input
                         type="text"
