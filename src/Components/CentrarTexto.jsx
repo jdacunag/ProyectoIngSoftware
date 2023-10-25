@@ -1,5 +1,5 @@
 export const CentrarTexto = {
-    display: 'center',
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '20vh',

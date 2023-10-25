@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import CentrarTexto from '../Components/CentrarTexto';
+import  { titulo } from '../Components/Titulo';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -36,12 +38,13 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Registro</h2>
+    <div style = {{...CentrarTexto, top: '40%', height:'40%'}}>
+      <h2 style = {{...CentrarTexto, top: '-20%', fontSize:'50px', height: '10%'}}>Registro</h2>
       <form onSubmit={handleRegister}>
-        <div>
+        <div style = {{...CentrarTexto, top: '10%', height: '10%', width:'260px'}}>
           <label>Nombre de usuario:</label>
           <input
+            
             type="text"
             value={username}
             name='username'
@@ -49,8 +52,8 @@ function Register() {
             required
           />
         </div>
-        <div>
-          <label>Correo electrónico:</label>
+        <div style = {{...CentrarTexto, top: '25%', height: '10%', width:'260px'}}>
+          <label> Correo electrónico: </label>
           <input
             type="email"
             value={email}
@@ -59,7 +62,7 @@ function Register() {
             required
           />
         </div>
-        <div>
+        <div style = {{...CentrarTexto, top: '40%', height: '10%', width:'260px'}}> 
           <label>Contraseña:</label>
           <input
             type="password"
@@ -69,7 +72,7 @@ function Register() {
             required
           />
         </div>
-        <button type="submit">Registrarse</button>
+        <button type="submit" style = {{...CentrarTexto, top: '60%', height:'10%'}}>Registrarse</button>
       </form>
     </div>
   );
