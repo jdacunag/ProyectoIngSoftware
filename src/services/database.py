@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
-from models import Task, User, UpdateUser
+from models import *
 from bson import ObjectId
 
 uri = "mongodb+srv://admin0:heqVN5oxBkRFdZRj@cluster0.3libabt.mongodb.net/?retryWrites=true&w=majority"
@@ -12,8 +12,7 @@ async def get_one_task_id(id: str):
     task = await collection.find_one({'_id':ObjectId(id)})
     if task is not None:     
         return task
-    # If task is not found, return None or raise an exception, depending on your preference.
-    return None  # or you can raise an HTTPException here with a 404 status
+    return None  
 
 async def get_one_task_title(title: str):
     collection = database.tasks
@@ -76,4 +75,4 @@ async def createUser(user: User):
         createUser = await collection.find_one({'_id': newUser.inserted_id})
         return createUser
     except:
-        return None
+        return None        

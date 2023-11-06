@@ -85,9 +85,10 @@ class University(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     email: str
     courses: str
+    name : str
     address: Optional[str] = None
     description: Optional[str] = None
-
+   #image_data: Optional[bytes] = None
     class Config:
         orm_mode = True
         allow_population_by_field_name = True
@@ -97,6 +98,7 @@ class UpdateUniversity(BaseModel):
     email: Optional[str] = None
     courses: Optional[str] = None
     address: Optional[str] = None
+    name: Optional[str] = None
     description: Optional[str] = None
 
     class Config:
