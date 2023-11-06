@@ -7,6 +7,8 @@ import LinesChart from "../components/LinesChart";
 import Pies from "../components/PiesChart";
 import Bars from "../components/BarsChart";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../components/Footer";
+import NavbarSimple from "../components/Navbar";
 
 
 
@@ -18,7 +20,9 @@ function App() {
     return (
         <div>
             {/* Aquí incluiré las gráficas (un componente por cada ejemplo). */}
-            <h1 className="bg-info text-center font-monospace fw-bold lh-base">vission planning</h1>
+            <nav>
+                <NavbarSimple></NavbarSimple>
+            </nav>
             <div>
                 <p className="m-2"><b></b>Gráfico de líneas Universidades contratados derecho</p>
                 <div className="bg-light mx-auto px-2 border border-2 border-primary" style={{width:"450px", height:"230px"}}>
@@ -41,6 +45,10 @@ function App() {
                     </div>
                 </div>
             </div>
+            <footer>
+
+                <Footer></Footer>
+            </footer>
         </div>
     );
 }
