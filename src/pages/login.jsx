@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import InputDefault from '../Components/Input.jsx';
+import SimpleFooter from '../Components/Footer.jsx';
+import TwoColumnPage from '../Components/TwoColumns.jsx';
+import CentrarTexto from '../Components/CentrarTexto.jsx';
+import { H2Title } from '../Components/H2Title.jsx';
+import Logo from '../Components/Logo.jsx';
+import LineaNegra from '../Components/LineaNegra.jsx';
 
 function Login() {
     const [nombre, setNombre] = useState('');
@@ -34,7 +41,7 @@ function Login() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        height: '70vh',
     };
 
     const formStyle = {
@@ -59,11 +66,29 @@ function Login() {
         border: 'none',
         cursor: 'pointer',
     };
+    const columnStyle = {
+        display: 'inline-block',
+        width: '50%', /* Divide el ancho en dos columnas */
+        padding: '20px', /* Espacio entre el contenido y el borde */
+    };
 
     return (
         <div style={containerStyle}>
-            <h2 style={{ fontSize: '24px', marginBottom: '20px' }}>Iniciar Sesión</h2>
-            <form onSubmit={handleLogin} style={formStyle}>
+            {/*<LineaNegra></LineaNegra>*/}
+            <div className="flex">
+            <div className="w-1/2 p-4">
+                <h2>
+                    <Logo></Logo>
+                </h2>
+                <br></br>
+                <h2 style={H2Title}>- Descubre, informate e investiga en un solo click! -</h2>
+                <br></br>
+                <p>Vision Employment es la mejor herramienta para encontrar información sobre egresados de las diferentes universidades en Colombia</p>
+            </div>
+            <div className="w-1/2 p-4">
+                <h2 style={H2Title}>Iniciar Sesión</h2>
+                <br></br>
+                <form onSubmit={handleLogin} style={formStyle}>
                 <label>Usuario:</label>
                 <input
                     type="text"
@@ -84,7 +109,11 @@ function Login() {
                     Iniciar Sesión
                 </button>
             </form>
-            <Link to="/register">Ir a Registro</Link>
+            <Link to="/register"><h2 style={H2Title}>Ir a Registro</h2></Link>
+            </div>
+            </div>
+            <br></br>
+            <SimpleFooter style={{ height: '100px' }}></SimpleFooter>
         </div>
     );
 }

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Logo from '../Components/Logo.jsx';
+import { H2Title } from '../Components/H2Title.jsx';
+import LineaNegra from '../Components/LineaNegra.jsx';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -59,8 +62,21 @@ function Register() {
   };
 
   return (
+
     <div style={containerStyle}>
-      <h2 style={{ fontSize: '24px', marginBottom: '20px' }}>Registro</h2>
+      <LineaNegra></LineaNegra>
+      <div className="flex">
+      <div className="w-1/2 p-4">
+        <h2>
+          <Logo></Logo>
+          </h2>
+          <br></br>
+          <h2 style={H2Title}>- Descubre, informate e investiga en un solo click! -</h2>
+          <br></br>
+          <p>Vision Employment es la mejor herramienta para encontrar información sobre egresados de las diferentes universidades en Colombia</p>
+      </div>
+      <div className="w-1/2 p-4">
+      <h2 style={H2Title}>Registro</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -70,6 +86,7 @@ function Register() {
           required
           style={inputStyle}
         />
+        <br></br>
         <input
           type="email"
           value={email}
@@ -78,6 +95,7 @@ function Register() {
           required
           style={inputStyle}
         />
+        <br></br>
         <input
           type="password"
           value={password}
@@ -86,10 +104,13 @@ function Register() {
           required
           style={inputStyle}
         />
+        <br></br>
         <button type="submit" style={buttonStyle}>
           Registrarse
         </button>
       </form>
+      </div>
+      </div>
     </div>
   );
 }

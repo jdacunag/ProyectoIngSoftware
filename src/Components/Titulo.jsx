@@ -7,7 +7,5 @@ export const titulo ={
     position: 'absolute',
     left: '43.5%',
     top: '40%',
-    color: 'Black',
-
-    
+    color: 'Black', 
 }
