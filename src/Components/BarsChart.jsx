@@ -1,4 +1,5 @@
 import { Bar } from 'react-chartjs-2';
+import PropTypes from 'prop-Types';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -22,9 +23,9 @@ ChartJS.register(
     Filler
 );
 
-var beneficios = [72, 56, 20, 36, 80, 40, 30, 24, 55];
-var Universidades = ["UDA", "EIA", "POLITECNICO", "UDM", "EAFIT", "UNAL", "ITM", "IUE", "PONTIFICIA"];
 
+
+export default function Bars({ valores, labels, label, min, max}) {
 var misoptions = {
     responsive : true,
     animation : false,
@@ -35,8 +36,7 @@ var misoptions = {
     },
     scales : {
         y : {
-            min : -0,
-            max : 250
+            max : max
         },
         x: {
             ticks: { color: 'rgba(0, 0 ,0 )'}
@@ -45,16 +45,22 @@ var misoptions = {
 };
 
 var midata = {
-    labels: Universidades,
+    labels: labels,
     datasets: [
         {
-            label: 'Beneficios',
-            data: beneficios,
+            label: label,
+            data: valores,
             backgroundColor: 'rgba(0, 220, 195, 0.7)'
         }
     ]
 };
-
-export default function Bars() {
     return <Bar data={midata} options={misoptions} />
+}
+
+Bars.propTypes = {
+    valores: PropTypes.string.isRequired,
+    labels: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    max: PropTypes.number.isRequired,
+    min: PropTypes.number
 }

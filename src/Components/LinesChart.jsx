@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2';
+import PropTypes from 'prop-Types';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -22,15 +23,17 @@ ChartJS.register(
     Filler
 );
 
-var beneficios = [72, 56, 20, 36, 80, 40, 30, 24, 55];
-var meses = ["UDA", "EIA", "POLITECNICO", "UDM", "EAFIT", "UNAL", "ITM", "IUE", "PONTIFICIA"];
+
+
+export default function LinesChart({ valores,valores2, labels, label, label2, min, max}) {
+
 
 var midata = {
-    labels: meses,
+    labels: labels,
     datasets: [ // Cada una de las líneas del gráfico
         {
-            label: 'Realidad',
-            data: beneficios,
+            label: label,
+            data: valores,
             tension: 0.5,
             fill : true,
             borderColor: 'rgb(255, 99, 132)',
@@ -40,8 +43,8 @@ var midata = {
             pointBackgroundColor: 'rgba(255, 99, 132)',
         },
         {
-            label: 'Expectativa',
-            data: [20, 25, 60, 65, 45, 10, 5, 25, 35]
+            label: label2,
+            data: valores2
         },
     ],
 };
@@ -49,15 +52,21 @@ var midata = {
 var misoptions = {
     scales : {
         y : {
-            min : 0,
-            max: 100
+            max: max
         },
         x: {
             ticks: { color: 'rgb(255, 99, 132)'}
         }
     }
 };
-
-export default function LinesChart() {
     return <Line data={midata} options={misoptions}/>
+}
+LinesChart.propTypes = {
+    valores: PropTypes.string.isRequired,
+    valores2: PropTypes.string,
+    labels: PropTypes.string.isRequired,
+    label2: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    max: PropTypes.number.isRequired,
+    min: PropTypes.number
 }

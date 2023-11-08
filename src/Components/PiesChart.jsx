@@ -2,7 +2,11 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+
+
+export default function Pies({labels, valores,  label}) {
+
+    ChartJS.register(ArcElement, Tooltip, Legend);
 
 var options = {
     responsive : true,
@@ -10,11 +14,11 @@ var options = {
 };
 
 var data = {
-    labels: ['UDA', 'EIA', 'EAFIT', 'UDM', 'UNAL'],
+    labels: labels,
     datasets: [
         {
-            label: 'Popularidad en Navidad',
-            data: [35, 20, 20, 15, 10],
+            label: label,
+            data: valores,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -33,7 +37,10 @@ var data = {
         },
     ],
 };
-
-export default function Pies() {
     return <Pie data={data} options={options} />
+}
+Pies.propTypes = {
+    valores: PropTypes.string.isRequired,
+    labels: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
 }
