@@ -83,12 +83,11 @@ class UpdatePurchaseData(BaseModel):
 
 class University(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
-    email: str
-    courses: str
+    email: Optional[str]
     name : str
     address: Optional[str] = None
     description: Optional[str] = None
-   #image_data: Optional[bytes] = None
+    image_data: Optional[bytes] = None
     class Config:
         orm_mode = True
         allow_population_by_field_name = True
@@ -106,41 +105,12 @@ class UpdateUniversity(BaseModel):
         allow_population_by_field_name = True
         json_encoders = {ObjectId: str}
 
-class Course(BaseModel):
-    id: Optional[PyObjectId] = Field(alias='_id')
-    universityId: PyObjectId
-    name: str
-    mode: Optional[str] = None
-    pensum: str
-    description: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-        allow_population_by_field_name = True
-        json_encoders = {ObjectId: str}
-
-
-class UpdateCourse(BaseModel):
-    universityId: Optional[PyObjectId] = None
-    name: Optional[str] = None
-    mode: Optional[str] = None
-    pensum: Optional[str] = None
-    description: Optional[str] = None
-
-    class Config:
-        orm_mode = True
-        allow_population_by_field_name = True
-        json_encoders = {ObjectId: str}
 
 class Graduate(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
-    universityId: PyObjectId
-    courseId: PyObjectId
-    name: str
-    company: Optional[str] = None
-    salary: str
-    skills: str
-
+    universityId: Optional[PyObjectId]
+    salary: Optional[str]
+    END_Date: Optional[str]
     class Config:
         orm_mode = True
         allow_population_by_field_name = True

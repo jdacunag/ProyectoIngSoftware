@@ -1,4 +1,3 @@
-import React, { useEffect,useState } from 'react'
 import SimpleFooter from '../components/Footer'
 import NavbarSimple from '../components/Navbar'
 import ProductCard from '../components/sell_card'

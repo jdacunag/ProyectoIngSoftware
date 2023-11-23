@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from task import tasks
 from graduate import Graduates
 from credentials import credentials
-from Course import Courses
 from University import Universities
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
@@ -23,5 +22,4 @@ def welcome():
 app.include_router(tasks)
 app.include_router(credentials)
 app.include_router(Graduates)
-app.include_router(Courses)
 app.include_router(Universities)

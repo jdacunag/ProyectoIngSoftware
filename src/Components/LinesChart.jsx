@@ -1,5 +1,5 @@
 import { Line } from 'react-chartjs-2';
-import PropTypes from 'prop-Types';
+import PropTypes from 'prop-types';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -52,7 +52,8 @@ var midata = {
 var misoptions = {
     scales : {
         y : {
-            max: max
+            max: max,
+            min: min
         },
         x: {
             ticks: { color: 'rgb(255, 99, 132)'}

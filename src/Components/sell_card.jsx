@@ -1,5 +1,8 @@
-import React from "react";
+
+
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+
 
 const ProductCard = ({ university }) => {
   const navigate = useNavigate();
@@ -19,7 +22,7 @@ const ProductCard = ({ university }) => {
         <p className="text-gray-600 text-sm mt-1">{university.description}</p>
         <div className="mt-2">
           <span className="text-2xl text-gray-700">$15000.99</span>
-          <span className="text-sm text-gray-600 ml-1"><br />venta de los datos de los estudiantes del curso de {university.courses}</span>
+          <span className="text-sm text-gray-600 ml-1"><br />venta de los datos de los estudiantes del curso de </span>
         </div>
         <div className="mt-4">
           <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" onClick={handleonclick}>
@@ -31,7 +34,9 @@ const ProductCard = ({ university }) => {
     </div>
   );
 };
-
+ProductCard.propTypes = {
+  university: PropTypes.string.isRequired,
+}
 export default ProductCard;
 
 
