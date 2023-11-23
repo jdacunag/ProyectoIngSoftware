@@ -36,14 +36,6 @@ function Login() {
         }
     };
 
-    const containerStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '70vh',
-    };
-
     const formStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -72,45 +64,82 @@ function Login() {
         padding: '20px', /* Espacio entre el contenido y el borde */
     };
 
+    const container = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '70vh',
+    };
+
+    const card = {
+        maxWidth: '380px',
+        width: '100%',
+    };
+
+    const form = {
+        display: 'flex',
+        gap: '15px',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '20px',
+    };
+
+    const brand = {
+        display: 'flex',
+        gap: '15px',
+        flexDirection: 'column',
+        alignItems: 'center',
+        margin: '25px',
+    };
+
+    const logo = {
+        maxWidth: '380px',
+        width: '100%',
+    };
+
     return (
-        <div style={containerStyle}>
-            {/*<LineaNegra></LineaNegra>*/}
+        <div style={container}>
             <div className="flex">
-            <div className="w-1/2 p-4">
-                <h2>
-                    <Logo></Logo>
-                </h2>
-                <br></br>
-                <h2 style={H2Title}>- Descubre, informate e investiga en un solo click! -</h2>
-                <br></br>
-                <p>Vision Employment es la mejor herramienta para encontrar información sobre egresados de las diferentes universidades en Colombia</p>
-            </div>
-            <div className="w-1/2 p-4">
-                <h2 style={H2Title}>Iniciar Sesión</h2>
-                <br></br>
-                <form onSubmit={handleLogin} style={formStyle}>
-                <label>Usuario:</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    style={inputStyle}
-                />
-                <label>Contraseña:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={inputStyle}
-                />
-                <button type="submit" style={buttonStyle}>
-                    Iniciar Sesión
-                </button>
-            </form>
-            <Link to="/register"><h2 style={H2Title}>Ir a Registro</h2></Link>
-            </div>
+                <div style={card}>
+                    <card>
+                        <h2>
+                            <Logo></Logo>
+                        </h2>
+                        <br></br>
+                        <h2 style={H2Title}>- Descubre, informate e investiga en un solo click! -</h2>
+                        <br></br>
+                        <p>Vision Employment es la mejor herramienta para encontrar información sobre egresados de las diferentes universidades en Colombia</p>
+                    </card>
+                </div>
+                <div style={card}>
+                    <card>
+                        <h2 style={H2Title}>Iniciar Sesión</h2>
+                        <br></br>
+                        <form onSubmit={handleLogin} style={formStyle}>
+                            <label>Usuario:</label>
+                            <input
+                                type="text"
+                                name="username"
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                                style={inputStyle}
+                            />
+                            <label>Contraseña:</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                style={inputStyle}
+                            />
+                            <button type="submit" style={buttonStyle}>
+                                Iniciar Sesión
+                            </button>
+                        </form>
+                        <Link to="/register"><h2 style={H2Title}>Ir a Registro</h2></Link>
+                    </card>
+                </div>
             </div>
             <br></br>
             <SimpleFooter style={{ height: '100px' }}></SimpleFooter>
