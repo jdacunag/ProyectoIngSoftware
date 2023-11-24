@@ -32,9 +32,11 @@ async def getPurchase(UpdatePurchaseData:UpdatePurchaseData):
 async def create_PurchaseData(PurchaseData: PurchaseData):
     collection = database.Purchase
     try:
-        new_PurchaseData = await collection.insert_one(PurchaseData)
+        PurchaseData.universityId = ObjectId(PurchaseData.universityId)
+        #PurchaseData.userId = ObjectId(PurchaseData.userId)
+        new_PurchaseData = await collection.insert_one(PurchaseData.dict())
         createPurchaseData = await collection.find_one({'_id': new_PurchaseData.inserted_id})
         return createPurchaseData
     except:
-        return None
+        return PurchaseData
     

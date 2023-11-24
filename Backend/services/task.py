@@ -23,13 +23,6 @@ async def save_task(task: Task):
         return response
     raise HTTPException(400, 'Something went wrong')
 
-@tasks.get('/tasks/{id}', response_model=Task)
-async def get_task(id: str):
-    task = await get_one_task_id(id)
-    if task:
-        return task    
-    raise HTTPException(404, f'Task with id {id} not found')
-
 @tasks.delete('/tasks/{id}')
 async def remove_task(id: str):
     task = await delete_task(id)
@@ -43,3 +36,10 @@ async def update(id: str, task: UpdateTask):
     if response:
         return response
     return 'updating task'
+
+@tasks.get('/tasks/{id}', response_model=Task)
+async def get_task(id: str):
+    response = await get_one_task_id(id)
+    if response:
+        return response
+    raise HTTPException(404, f"There is no task with the id {id}")

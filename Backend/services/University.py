@@ -23,9 +23,10 @@ async def save_University(University: University):
         return response
     raise HTTPException(400, 'Something went wrong')
 
-@Universities.get('/Corse/{id}', response_model=University)
+
+@Universities.get('/university/{id}', response_model=University)
 async def get_University(id: str):
-    task = await get_one_University_Byid(id)
-    if task:
-        return task    
-    raise HTTPException(404, f'Task with id {id} not found')
+    response = await get_one_University_Byid(id)
+    if response:
+        return response
+    raise HTTPException(404, f"There is no task with the id {id}")

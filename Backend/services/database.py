@@ -7,12 +7,12 @@ client = AsyncIOMotorClient(uri)
 database = client.api_database
 #collection = database.tasks
 
-async def get_one_task_id(id: str):
+    
+async def get_one_task_id(id):
     collection = database.tasks
-    task = await collection.find_one({'_id':ObjectId(id)})
-    if task is not None:     
-        return task
-    return None  
+    task = await collection.find_one({"_id": ObjectId(id)})
+    print(task, "hollaaaaa")
+    return task
 
 async def get_one_task_title(title: str):
     collection = database.tasks
@@ -26,6 +26,7 @@ async def get_all_tasks():
         cursor = collection.find({})
         async for document in cursor:
             tasks.append(Task(**document))
+            print(tasks)
         return tasks
     except Exception as e:
         return f'get_all_tasks Query Error: {e}'

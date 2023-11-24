@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import style from './Home.module.css'
 import Title from '../components/title';
-import { faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShop } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../Components/TopBar';
@@ -11,13 +10,13 @@ import TopBar from '../Components/TopBar';
 
 function Home() {
   const navigate = useNavigate();
-  const handlePurchase = async(e) => {
+  const handlePurchase = async(e, id) => {
     e.preventDefault();
-
+    console.log(id)
     // AGREGAR AL CARRITO LA ESCUELA SELECCIONADA
     // NO MANDAR DE UNA (OPCIONAL)
-
-    navigate('/payment');
+ 
+    navigate(`/payment/${id}`);
   };
 
   const logo = "Vision Planning";
@@ -65,7 +64,7 @@ function Home() {
                 </div>
                 <br></br>
                 <div>
-                <Button className={style.button} icon={faShop} onClick={handlePurchase}>Comprar información</Button>
+                <Button className={style.button} icon={faShop} onClick={(e) => handlePurchase(e, uni._id)}>Comprar información</Button>
                 </div>
               </Card>
             ))}
