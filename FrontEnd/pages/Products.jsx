@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import style from './Home.module.css'
 import Title from '../components/title';
-import { faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
+import { faBackward, faCancel, faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
@@ -15,11 +15,17 @@ function Products() {
   const handlePurchase = async(e) => {
     e.preventDefault();
 
+
     // AGREGAR AL CARRITO LA ESCUELA SELECCIONADA
     // NO MANDAR DE UNA (OPCIONAL)
 
     navigate('/payment');
   };
+
+  const handleCancel = async (e) => {
+    e.preventDefault();
+    navigate('/home');
+    };
 
   const logo = "Vision Planning";
   const links = [
@@ -45,17 +51,9 @@ function Products() {
     <div>
         {/*<NavbarSimple></NavbarSimple>*/}
         <TopBar logo={logo} links={links}></TopBar>
-
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-            alignItems: 'centerr',
-            }}>
-
             <br></br>
             <br></br>
-            <Title fontSize={30}>Datos de tu compra universidad</Title>
+            <Title fontSize={30}>Datos de tu compra de  datos universitarios</Title>
             <br></br>
 
             <div className={style.container}>
@@ -70,7 +68,14 @@ function Products() {
                     max={500}
                 />
                 </div>
-            </div>
+
+                <Button
+                    backgroundColor="#d84242"
+                    onClick={handleCancel}
+                    icon={faBackward}
+                  >
+                    Volver
+                  </Button>
 
         </div>
         

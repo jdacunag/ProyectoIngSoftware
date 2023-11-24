@@ -63,16 +63,16 @@ export default function Login() {
 
                         <div className={style.brand}>
                             <FontAwesomeIcon icon={faUser} size="3x" />
-                            <Title>Login</Title>
+                            <Title>Iniciar Sesión</Title>
                         </div>
 
-                        <Input inputRef={usernameRef} type="text" placeholder="Username" focus />
-                        <Input inputRef={passwordRef} type="password" placeholder="Password" />
+                        <Input inputRef={usernameRef} type="text" placeholder="Usuario" focus />
+                        <Input inputRef={passwordRef} type="password" placeholder="Contraseña" />
                         <Button submit icon={faUser}>
-                            Login
+                            Iniciar Sesion
                         </Button>
 
-                        <Link href="/register">I do not have an account</Link>
+                        <Link href="/register">No tengo una cuenta</Link>
                     </form>
                 </Card>
             </div>
