@@ -41,10 +41,22 @@ function Home() {
             </div>
         <div className={style.projects}>
         {universities.map((uni) => (
-              <Card  key={uni.nombre}>
-                <img src={uni.logo} className={style.banner} />
-                <p>{uni.nombre}</p>
-                <p>{uni.email}</p>
+              <Card backgroundColor='#f0f0f0' key={uni.nombre}>
+                <img
+                  src={uni.logo}
+                  className={style.banner}
+                  style={{
+                    padding: '10px',
+                    border: '0px solid #000000',
+                    aspectRatio: '28 / 10'
+                  }}
+                />
+                <br></br><br></br>
+                <div style={{ marginLeft: '10px' }}>
+                  <Title fontSize={22}>{uni.nombre}</Title>
+                  <p style={{ marginTop: '5px' }}>{uni.email}</p>
+                </div>
+                <br></br>
                 <div>
                 <Button className={style.button} icon={faShop} onClick={handlePurchase}>Comprar información</Button>
                 </div>
