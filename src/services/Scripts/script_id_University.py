@@ -5,7 +5,7 @@ mongo_uri = "mongodb+srv://admin0:heqVN5oxBkRFdZRj@cluster0.3libabt.mongodb.net/
 mongo_client = MongoClient(mongo_uri)
 mongo_database = mongo_client.api_database
 mongo_universities_collection = mongo_database.Universities
-mongo_users_collection = mongo_database.Users
+mongo_users_collection = mongo_database.Graduate
 
 try:
     # Obtener la lista de universidades desde la colección Universities
@@ -15,8 +15,8 @@ try:
     # Actualizar usuarios con el ID de la universidad correspondiente
     for university_name, university_id in university_id_map.items():
         mongo_users_collection.update_many(
-            {"university": university_name},
-            {"$set": {"university_id": university_id}}
+            {"institute": university_name},
+            {"$set": {"universityId": university_id}}
         )
 
     print("ID de universidades actualizado en la colección Users correctamente")
