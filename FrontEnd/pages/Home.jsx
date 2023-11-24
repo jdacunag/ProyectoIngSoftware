@@ -20,7 +20,7 @@ function Home() {
     navigate('/payment');
   };
 
-  const logo = "Mi Logo";
+  const logo = "Vision Planning";
   const links = [
     { url: '/products', label: 'Mis Productos' },
     { url: '/', label: 'Cerrar Sesión' }

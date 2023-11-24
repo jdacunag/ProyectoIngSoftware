@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../Components/TopBar';
+import LinesChart from '../Components/LinesChart';
 
 
 function Products() {
@@ -20,7 +21,7 @@ function Products() {
     navigate('/payment');
   };
 
-  const logo = "Mi Logo";
+  const logo = "Vision Planning";
   const links = [
     { url: '/products', label: 'Mis Productos' },
     { url: '/', label: 'Cerrar Sesión' }
@@ -33,49 +34,47 @@ function Products() {
       .then((data) => setUniversities(data))
       .catch((error) => console.error('Error:', error));
   }, []);
-  const [universities, setUniversities] = useState([]);
+
+    const [universities, setUniversities] = useState([]);
+
+    const valores = [100, 200, 300];
+    const valores2 = [200, 400, 500];
+    const labels = ['2018', '2023'];
 
   return (
     <div>
         {/*<NavbarSimple></NavbarSimple>*/}
         <TopBar logo={logo} links={links}></TopBar>
-        <div className={style.container}>
-        <div>
-                <Title className={style.title}> 
 
-                 Universidades Disponibles
-                 </Title>
-            </div>
-        <div className={style.projects}>
-        {universities.map((uni) => (
-              <Card backgroundColor='#f0f0f0' key={uni.nombre}>
-                <img
-                  src={uni.logo}
-                  className={style.banner}
-                  style={{
-                    padding: '10px',
-                    border: '0px solid #000000',
-                    aspectRatio: '28 / 10'
-                  }}
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'centerr',
+            }}>
+
+            <br></br>
+            <br></br>
+            <Title fontSize={30}>Datos de tu compra universidad</Title>
+            <br></br>
+
+            <div className={style.container}>
+                <div className={style.card}>
+                <LinesChart
+                    valores={valores}
+                    valores2={valores2}
+                    labels={labels}
+                    label="Graduados"
+                    label2="Ingresados"
+                    min={0}
+                    max={500}
                 />
-                <br></br><br></br>
-                <div style={{ marginLeft: '10px' }}>
-                  <Title fontSize={22}>{uni.nombre}</Title>
-                  <p style={{ marginTop: '5px' }}>{uni.email}</p>
                 </div>
-                <br></br>
-                <div>
-                <Button className={style.button} icon={faShop} onClick={handlePurchase}>Comprar información</Button>
-                </div>
-              </Card>
-            ))}
-        </div>
-        </div>
+            </div>
 
-          
-  
-        <div>
         </div>
+        
+
     </div>
   )
 }

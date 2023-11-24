@@ -44,7 +44,14 @@ var midata = {
         },
         {
             label: label2,
-            data: valores2
+            data: valores2,
+            tension: 0.5,
+            fill : true,
+            borderColor: 'rgb(25, 99, 132)',
+            backgroundColor: 'rgba(25, 99, 132, 0.5)',
+            pointRadius: 5,
+            pointBorderColor: 'rgba(25, 99, 132)',
+            pointBackgroundColor: 'rgba(25, 99, 132)',
         },
     ],
 };
@@ -63,11 +70,11 @@ var misoptions = {
     return <Line data={midata} options={misoptions}/>
 }
 LinesChart.propTypes = {
-    valores: PropTypes.string.isRequired,
-    valores2: PropTypes.string,
-    labels: PropTypes.string.isRequired,
+    valores: PropTypes.array.isRequired,
+    valores2: PropTypes.array,
+    labels: PropTypes.array.isRequired,
     label2: PropTypes.string,
     label: PropTypes.string.isRequired,
     max: PropTypes.number.isRequired,
     min: PropTypes.number
-}
+};
