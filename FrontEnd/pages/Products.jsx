@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import style from './Home.module.css'
 import Title from '../components/title';
-import {  faShop } from '@fortawesome/free-solid-svg-icons';
+import {  faBackspace, faShop } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../Components/TopBar';
@@ -46,6 +46,7 @@ function Products() {
 
     const valores = [100, 200, 300];
     const valores2 = [200, 400, 500];
+    const valores3 = [400, 300, 250];
     const labels = ['2018', '2023'];
 
   return (
@@ -54,7 +55,7 @@ function Products() {
         <TopBar logo={logo} links={links}></TopBar>
             <br></br>
             <br></br>
-            <Title fontSize={30}>Datos de tu compra de  datos universitarios</Title>
+            <Title fontSize={30}>Tu compra de  datos universitarios</Title>
             <br></br>
 
             <div className={style.container}>
@@ -62,18 +63,21 @@ function Products() {
                 <LinesChart
                     valores={valores}
                     valores2={valores2}
+                    valores3={valores3}
                     labels={labels}
                     label="Graduados"
                     label2="Ingresados"
+                    label3="Salarios"
                     min={0}
                     max={500}
                 />
                 </div>
 
+                <br></br>
                 <Button
                     backgroundColor="#d84242"
                     onClick={handleCancel}
-                    icon={faBackward}
+                    icon={faBackspace}
                   >
                     Volver
                   </Button>
