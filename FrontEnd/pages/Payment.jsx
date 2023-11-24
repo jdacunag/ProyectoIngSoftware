@@ -1,16 +1,17 @@
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
-import { useLocation, useParams } from 'wouter';
+import { useLocation } from 'wouter';
 import Card from '../components/Card';
+import Link from '../components/Link';
 import Button from '../components/Button';
 import Input from '../components/input';
 import Title from '../components/title';
-import * as taskapi from '../services/tasks';
-import style from './EditProject.module.css';
+import { useNavigate } from 'react-router-dom';
 
+import style from './Payment.module.css';
 
-export default function EditTask() {
-    const { taskId } = useParams();
+export default function Payment() {
     const [location, setLocation] = useLocation();
     const nameRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -20,7 +21,6 @@ export default function EditTask() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const ProjectId = location.split('/')[2];
-        const title = nameRef.current?.value;
         const description = descriptionRef.current?.value;
         const estado = estadoRef.current?.value;
         const fechaFin = fechaFinRef.current?.value;
@@ -28,7 +28,8 @@ export default function EditTask() {
         setLocation(`/projects/${ProjectId}`);
     };
 
-    const title = location.split('/').pop() === 'edit' ? 'Edit Task' : 'Create Task';
+    //const title = location.split('/').pop() === 'edit' ? 'Edit Task' : 'Create Task';
+    const title = 'Payment';
     
 
   return (
@@ -39,12 +40,9 @@ export default function EditTask() {
                 <Title>{title}</Title>
             </div>
             <form onSubmit={handleSubmit} className={style.form}>
-                <Input type="text" placeholder="Name" focus inputRef={nameRef} />
-                <Input type="textarea" placeholder="Description" inputRef={descriptionRef} />
-                <Input type="select" placeholder="State" inputRef={estadoRef} />
-                <Input type="date" placeholder="State" inputRef={fechaFinRef} />
-                <Button icon={faPenToSquare} submit>
-                    {title}
+                <Input type="text" placeholder="Nombre" focus inputRef={nameRef} />
+                <Button submit icon={faCartPlus}>
+                    Complete Payment
                 </Button>
             </form>
         </Card>
