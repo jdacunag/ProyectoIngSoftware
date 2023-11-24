@@ -31,7 +31,7 @@ export default function Login() {
         try {
            // const user = await userApi.login(username, password);
          //   createSession(user.id);
-            setLocation('/projects');
+            setLocation('/Home');
         } catch (error) {
             alert(error.message);
         }
