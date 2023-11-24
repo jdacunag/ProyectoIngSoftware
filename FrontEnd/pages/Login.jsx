@@ -13,8 +13,7 @@ import style from './Login.module.css';
 
 
 export default function Login() {
-    sessionStorage.removeItem('userId');
-    
+
     const [, setLocation] = useLocation();
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
