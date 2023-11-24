@@ -8,7 +8,7 @@ database = client.api_database
 
 
 async def get_all_universities():
-    collection = database.University
+    collection = database.Universities
     try:
         Universities = []
         cursor = collection.find({})
@@ -38,7 +38,7 @@ async def create_University(University: University):
     except:
         return None
 async def get_one_University_Byid(id: str):
-    collection = database.University
+    collection = database.Universities
     University = await collection.find_one({'_id':ObjectId(id)})
     if University is not None:     
         return University

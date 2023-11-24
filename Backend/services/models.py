@@ -84,10 +84,10 @@ class UpdatePurchaseData(BaseModel):
 class University(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     email: Optional[str]
-    name : str
-    address: Optional[str] = None
-    description: Optional[str] = None
-    image_data: Optional[bytes] = None
+    cursos: list
+    nombre : str
+    descripcion: Optional[str] = None
+    logo: Optional[bytes] = None
     class Config:
         orm_mode = True
         allow_population_by_field_name = True
