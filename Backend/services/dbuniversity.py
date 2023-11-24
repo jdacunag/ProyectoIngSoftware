@@ -19,7 +19,7 @@ async def get_all_universities():
         return f'get_all_tasks Query Error: {e}'
     
 async def getUniversity(UpdateUniversity:UpdateUniversity):
-    collection = database.University
+    collection = database.Universities
     try:
         query = {'email': UpdateUniversity.email}
         University = await collection.find_one(query)
@@ -30,7 +30,7 @@ async def getUniversity(UpdateUniversity:UpdateUniversity):
         return None
     
 async def create_University(University: University):
-    collection = database.University
+    collection = database.Universities
     try:
         newUniversity = await collection.insert_one(University)
         createUniversity = await collection.find_one({'_id': newUniversity.inserted_id})
@@ -39,13 +39,12 @@ async def create_University(University: University):
         return None
 async def get_one_University_Byid(id: str):
     collection = database.Universities
-    University = await collection.find_one({'_id':ObjectId(id)})
+    University = await collection.find_one({'_id': ObjectId(id)})
     if University is not None:     
         return University
-    # If University is not found, return None or raise an exception, depending on your preference.
-    return None  # or you can raise an HTTPException here with a 404 status
+    return None  
 
 async def get_one_University_Byname(name: str):
-    collection = database.University
+    collection = database.Universities
     University = await collection.find_one({'name': name})
     return University              

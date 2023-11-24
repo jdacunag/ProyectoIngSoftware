@@ -60,7 +60,9 @@ class UpdateUser(BaseModel):
 class PurchaseData(BaseModel):
     id: Optional[PyObjectId] = Field(alias='_id')
     userId: PyObjectId
-    UniversityId: PyObjectId
+    universityId: PyObjectId
+    name: str
+    address: str
     paymentMethod: int
     email: Optional[str] = None
     date: str
@@ -75,6 +77,8 @@ class PurchaseData(BaseModel):
 class UpdatePurchaseData(BaseModel):
     userId: Optional[PyObjectId] = None
     University: Optional[PyObjectId] = None
+    name: Optional[str] = None
+    address: Optional[str] =  None
     paymentMethod: Optional[int] = None
     email: Optional[str] = None
     date: Optional[str]
