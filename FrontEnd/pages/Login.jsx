@@ -40,10 +40,9 @@ export default function Login() {
             });
     
             if (res.ok) {
-                console.log("LOGGED IN");
                 navigate('/home');
             } else {
-                console.log("NOT LOGGED IN");
+                alert('No se pudo iniciar sesion. Asegurate que los datos sean correctos');
             }
         } catch (error) {
             alert(error.message);
