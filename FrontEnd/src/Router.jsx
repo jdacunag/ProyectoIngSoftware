@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Payment from "../pages/Payment";
 import Graphs from "../pages/Graphs";
+import Products from "../pages/Products";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/home" element={<Home/>}/>
       <Route path="/payment" element={<Payment/>}/>
       <Route path="/graphs" element={<Graphs/>}/>
+      <Route path="/products" element={<Products/>}/>
     </Routes>
     </BrowserRouter>
   )
