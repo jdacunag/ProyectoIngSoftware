@@ -29,14 +29,23 @@ async def getPurchase(UpdatePurchaseData:UpdatePurchaseData):
     except:
         return None
     
-async def create_PurchaseData(PurchaseData: PurchaseData):
+async def gitcreate_PurchaseData(PurchaseData: PurchaseData):
     collection = database.Purchase
     try:
-        PurchaseData.universityId = ObjectId(PurchaseData.universityId)
-        #PurchaseData.userId = ObjectId(PurchaseData.userId)
-        new_PurchaseData = await collection.insert_one(PurchaseData.dict())
+        new_PurchaseData = await collection.insert_one(PurchaseData)
         createPurchaseData = await collection.find_one({'_id': new_PurchaseData.inserted_id})
         return createPurchaseData
     except:
         return PurchaseData
-    
+
+
+async def get_all_purchasesByUser(UserId: str):
+    collection = database.Purchase
+    try:
+        cursor = collection.find({'userId': UserId})
+        Purchases = []
+        async for document in cursor:
+            Purchases.append(PurchaseData(**document))
+        return Purchases
+    except Exception as e:
+        return f'get_all_purchasesByUser Query Error: {e}'

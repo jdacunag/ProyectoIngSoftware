@@ -6,15 +6,15 @@ import Input from "../components/input";
 import Title from "../components/title";
 import ListBox from "../components/ListBox";
 import { useNavigate } from "react-router-dom";
-import useSession from '../hooks/useSession'
+import useSession from "../hooks/useSession";
 import { useLocation } from "wouter";
 
 import style from "./Payment.module.css";
 import TopBar from "../Components/TopBar";
 
 export default function Payment() {
-  const [location] = useLocation()  
-  var {userId} = useSession()  
+  const [location] = useLocation();
+  var { userId } = useSession();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const paymentMethodRef = useRef(null);
@@ -23,26 +23,30 @@ export default function Payment() {
   const cvvRef = useRef(null);
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
-    const universityId = location.split('/').pop()
-
+    const universityId = location.split("/").pop();
 
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/university/${universityId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const res = await fetch(
+          `http://127.0.0.1:8000/university/${universityId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (!res.ok) {
-          throw new Error(`Error al obtener la Universidad. Código de estado: ${res.status}`);
+          throw new Error(
+            `Error al obtener la Universidad. Código de estado: ${res.status}`
+          );
         }
 
         const University = await res.json();
-        setCartItems([University.nombre])
+        setCartItems([University.nombre]);
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
       }
     };
 
@@ -54,48 +58,46 @@ export default function Payment() {
       // Acciones de limpieza, si es necesario
     };
   }, []);
-   
- 
+
   const total = ["$1.000"];
 
   const navigate = useNavigate();
 
   const handleCancel = async (e) => {
     e.preventDefault();
-    const name = nameRef.current?.value
-    const email = emailRef.current?.value
-    const paymentMethod = paymentMethodRef.current?.value
-    const address = addressRef.current?.value
-    const date = dateRef.current?.value
-    const cvv = cvvRef.current?.value
-    const universityId = location.split('/').pop()
+    const name = nameRef.current?.value;
+    const email = emailRef.current?.value;
+    const paymentMethod = paymentMethodRef.current?.value;
+    const address = addressRef.current?.value;
+    const date = dateRef.current?.value;
+    const cvv = cvvRef.current?.value;
+    const universityId = location.split("/").pop();
     const userData = {
-        name,
-        email,
-        paymentMethod,
-        address,
-        date,
-        cvv,
-        userId,
-        universityId
-    }
-    
+      name,
+      email,
+      paymentMethod,
+      address,
+      date,
+      cvv,
+      userId,
+      universityId,
+    };
+
     try {
-        console.log(userData)
-        const res = await fetch('http://127.0.0.1:8000/Purchase', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          
-          body: JSON.stringify(userData),
-        });
-      } catch (error) {
-        console.error('Error:', error);
-      }
-   // navigate("/home");
+      console.log(userData);
+      const res = await fetch("http://127.0.0.1:8000/Purchase", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(userData),
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+     navigate("/home");
   };
-  
 
   const title = "Zona de Pagos";
   const logo = "Mi Logo";
