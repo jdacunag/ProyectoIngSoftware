@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useLocation } from 'wouter';
 import Card from '../components/Card';
 import Link from '../components/Link';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Input from '../components/input';
 import Title from '../components/title';
@@ -17,6 +18,7 @@ export default function Login() {
     const [, setLocation] = useLocation();
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
+    const navigate = useNavigate();
     //const { createSession } = useSession();
     
 
@@ -39,7 +41,7 @@ export default function Login() {
     
             if (res.ok) {
                 console.log("LOGGED IN");
-                setLocation('/Home');
+                navigate('/home');
             } else {
                 console.log("NOT LOGGED IN");
             }
