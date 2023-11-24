@@ -6,9 +6,20 @@ import { faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import	NavbarSimple from '../components/Navbar'
 import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
+  const navigate = useNavigate();
+  const handlePurchase = async(e) => {
+    e.preventDefault();
+
+    // AGREGAR AL CARRITO LA ESCUELA SELECCIONADA
+    // NO MANDAR DE UNA (OPCIONAL)
+
+    navigate('/payment');
+  };
+
   useEffect(() => {
     // Realiza la solicitud GET para obtener la lista de universidades
     fetch('http://127.0.0.1:8000/University')
@@ -35,7 +46,7 @@ function Home() {
                 <p>{uni.nombre}</p>
                 <p>{uni.email}</p>
                 <div>
-                <Button className={style.button} icon={faShop}>Comprar información</Button>
+                <Button className={style.button} icon={faShop} onClick={handlePurchase}>Comprar información</Button>
                 </div>
               </Card>
             ))}

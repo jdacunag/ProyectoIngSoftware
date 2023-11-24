@@ -8,7 +8,7 @@
 }
 
 .card {
-    max-width: 500px;
+    max-width: 80%;
     width: 100%;
 }
 
@@ -25,4 +25,19 @@
     align-items: center;
     flex-direction: column;
     padding-top: 30px;
+}
+
+.columnsContainer {
+    display: flex;
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%; /* Cada columna ocupa el 50% de la pantalla */
+    padding-left: 3%;
+    padding-right: 3%;
 }
