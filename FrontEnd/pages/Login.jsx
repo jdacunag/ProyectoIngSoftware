@@ -7,10 +7,9 @@ import Link from '../components/Link';
 import Button from '../components/Button';
 import Input from '../components/input';
 import Title from '../components/title';
-import useSession from '../hooks/useSession';
-import * as userApi from '../services/user';
-import style from './Login.module.css';
-import TaskhubLogo from '../images/TaskhubLogo.png';
+//import useSession from '../hooks/useSession';
+//import style from './Login.module.css';
+
 
 export default function Login() {
     sessionStorage.removeItem('userId');
@@ -18,7 +17,7 @@ export default function Login() {
     const [, setLocation] = useLocation();
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-    const { createSession } = useSession();
+    //const { createSession } = useSession();
     
 
     const handleSubmit = async (e) => {
@@ -31,7 +30,7 @@ export default function Login() {
 
         try {
             const user = await userApi.login(username, password);
-            createSession(user.id);
+         //   createSession(user.id);
             setLocation('/projects');
         } catch (error) {
             alert(error.message);
@@ -43,7 +42,6 @@ export default function Login() {
 
             <div >
 
-                <img className={style.Logo} src={TaskhubLogo} />
 
                 <Card>
                     <form className={style.form} onSubmit={handleSubmit}>
