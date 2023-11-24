@@ -15,7 +15,7 @@ function Home() {
     console.log(id)
     // AGREGAR AL CARRITO LA ESCUELA SELECCIONADA
     // NO MANDAR DE UNA (OPCIONAL)
- 
+      
     navigate(`/payment/${id}`);
   };
 
