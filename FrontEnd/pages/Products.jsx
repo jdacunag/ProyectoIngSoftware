@@ -6,16 +6,12 @@ import {  faShop } from '@fortawesome/free-solid-svg-icons';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../Components/TopBar';
-import LinesChart from '../Components/LinesChart';
-import useSession from '../hooks/useSession'
 
 
 function Products() {
-  const {userId} = useSession();
   const navigate = useNavigate();
   const handlePurchase = async(e) => {
     e.preventDefault();
-
 
     // AGREGAR AL CARRITO LA ESCUELA SELECCIONADA
     // NO MANDAR DE UNA (OPCIONAL)
@@ -23,12 +19,7 @@ function Products() {
     navigate('/payment');
   };
 
-  const handleCancel = async (e) => {
-    e.preventDefault();
-    navigate('/home');
-    };
-
-  const logo = "Vision Planning";
+  const logo = "Mi Logo";
   const links = [
     { url: '/products', label: 'Mis Productos' },
     { url: '/', label: 'Cerrar Sesión' }
@@ -36,51 +27,54 @@ function Products() {
 
   useEffect(() => {
     // Realiza la solicitud GET para obtener la lista de universidades
-    fetch(`http://127.0.0.1:8000/Purchase/`)
+    fetch('http://127.0.0.1:8000/University')
       .then((response) => response.json())
       .then((data) => setUniversities(data))
       .catch((error) => console.error('Error:', error));
   }, []);
-
-    const [universities, setUniversities] = useState([]);
-
-    const valores = [100, 200, 300];
-    const valores2 = [200, 400, 500];
-    const labels = ['2018', '2023'];
+  const [universities, setUniversities] = useState([]);
 
   return (
     <div>
         {/*<NavbarSimple></NavbarSimple>*/}
         <TopBar logo={logo} links={links}></TopBar>
-            <br></br>
-            <br></br>
-            <Title fontSize={30}>Datos de tu compra de  datos universitarios</Title>
-            <br></br>
+        <div className={style.container}>
+        <div>
+                <Title className={style.title}> 
 
-            <div className={style.container}>
-                <div className={style.card}>
-                <LinesChart
-                    valores={valores}
-                    valores2={valores2}
-                    labels={labels}
-                    label="Graduados"
-                    label2="Ingresados"
-                    min={0}
-                    max={500}
+                 Universidades Disponibles
+                 </Title>
+            </div>
+        <div className={style.projects}>
+        {universities.map((uni) => (
+              <Card backgroundColor='#f0f0f0' key={uni.nombre}>
+                <img
+                  src={uni.logo}
+                  className={style.banner}
+                  style={{
+                    padding: '10px',
+                    border: '0px solid #000000',
+                    aspectRatio: '28 / 10'
+                  }}
                 />
+                <br></br><br></br>
+                <div style={{ marginLeft: '10px' }}>
+                  <Title fontSize={22}>{uni.nombre}</Title>
+                  <p style={{ marginTop: '5px' }}>{uni.email}</p>
                 </div>
-
-                <Button
-                    backgroundColor="#d84242"
-                    onClick={handleCancel}
-                    icon={faBackward}
-                  >
-                    Volver
-                  </Button>
-
+                <br></br>
+                <div>
+                <Button className={style.button} icon={faShop} onClick={handlePurchase}>Comprar información</Button>
+                </div>
+              </Card>
+            ))}
         </div>
-        
+        </div>
 
+          
+  
+        <div>
+        </div>
     </div>
   )
 }

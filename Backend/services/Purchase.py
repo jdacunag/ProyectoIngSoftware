@@ -14,7 +14,7 @@ async def get_Purchase():
 async def save_Graduate(PurchaseData: PurchaseData):
 
     
-    response = await create_PurchaseData(PurchaseData.dict())
+    response = await create_PurchaseData(PurchaseData)
     if response:
         return response
     raise HTTPException(400, 'Something went wrong')

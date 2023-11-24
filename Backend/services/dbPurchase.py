@@ -29,7 +29,7 @@ async def getPurchase(UpdatePurchaseData:UpdatePurchaseData):
     except:
         return None
     
-async def gitcreate_PurchaseData(PurchaseData: PurchaseData):
+async def create_PurchaseData(PurchaseData: PurchaseData):
     collection = database.Purchase
     try:
         new_PurchaseData = await collection.insert_one(PurchaseData)

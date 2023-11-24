@@ -96,7 +96,7 @@ export default function Payment() {
     } catch (error) {
       console.error("Error:", error);
     }
-     navigate("/home");
+    // navigate("/home");
   };
 
   const title = "Zona de Pagos";
