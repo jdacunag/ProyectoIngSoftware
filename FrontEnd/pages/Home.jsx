@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import	NavbarSimple from '../components/Navbar'
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
+import TopBar from '../Components/TopBar';
 
 
 function Home() {
@@ -20,6 +21,12 @@ function Home() {
     navigate('/payment');
   };
 
+  const logo = "Mi Logo";
+  const links = [
+    { url: '/products', label: 'Mis Productos' },
+    { url: '/', label: 'Cerrar Sesión' }
+  ];
+
   useEffect(() => {
     // Realiza la solicitud GET para obtener la lista de universidades
     fetch('http://127.0.0.1:8000/University')
@@ -31,7 +38,8 @@ function Home() {
 
   return (
     <div>
-      <NavbarSimple></NavbarSimple>
+        {/*<NavbarSimple></NavbarSimple>*/}
+        <TopBar logo={logo} links={links}></TopBar>
         <div className={style.container}>
         <div>
                 <Title className={style.title}> 

@@ -1,4 +1,4 @@
-import { faCableCar, faCartArrowDown, faCartFlatbed, faCartFlatbedSuitcase, faCartPlus, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCableCar, faCancel, faCartArrowDown, faCartFlatbed, faCartFlatbedSuitcase, faCartPlus, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
 import { useLocation } from 'wouter';
@@ -11,6 +11,7 @@ import ListBox from '../components/ListBox';
 import { useNavigate } from 'react-router-dom';
 
 import style from './Payment.module.css';
+import TopBar from '../Components/TopBar';
 
 export default function Payment() {
     const [location, setLocation] = useLocation();
@@ -32,13 +33,27 @@ export default function Payment() {
         //setLocation(`/projects/${ProjectId}`);
     };
 
+    const navigate = useNavigate();
+
+    const handleCancel = async (e) => {
+        e.preventDefault();
+        navigate('/home');
+    };
+
     //const title = location.split('/').pop() === 'edit' ? 'Edit Task' : 'Create Task';
     const title = 'Zona de Pagos';
-    
+    const logo = "Mi Logo";
+    const links = [
+      { url: '/products', label: 'Mis Productos' },
+      { url: '/', label: 'Cerrar Sesión' }
+    ];
 
     return (
+        <div>
+        <TopBar logo={logo} links={links}></TopBar>
         <div className={style.container}>
             <div className={style.card}>
+
                 <Card>
                     <div className={style.title}>
                         <Title>{title}</Title>
@@ -83,11 +98,17 @@ export default function Payment() {
                                 <ListBox children={cartItems} boxTitle='Lista del carrito' />
                                 <br></br><br></br>
                                 <ListBox children={total} boxTitle='TOTAL' />
+
+                                <br></br>
+                                <Button backgroundColor='#d84242' onClick={handleCancel} icon={faCancel}>
+                                    Cancelar Compra
+                                </Button>
                             </div>
                         </div>
                     </form>
                 </Card>
             </div>
+        </div>
         </div>
     );
     
