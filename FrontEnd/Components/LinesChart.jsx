@@ -25,7 +25,7 @@ ChartJS.register(
 
 
 
-export default function LinesChart({ valores,valores2, labels, label, label2, min, max}) {
+export default function LinesChart({ valores,valores2,valores3,labels, label, label2,label3, min, max}) {
 
 
 var midata = {
@@ -37,7 +37,7 @@ var midata = {
             tension: 0.5,
             fill : true,
             borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: 'rgba(255, 99, 132, 0.25)',
             pointRadius: 5,
             pointBorderColor: 'rgba(255, 99, 132)',
             pointBackgroundColor: 'rgba(255, 99, 132)',
@@ -48,11 +48,22 @@ var midata = {
             tension: 0.5,
             fill : true,
             borderColor: 'rgb(25, 99, 132)',
-            backgroundColor: 'rgba(25, 99, 132, 0.5)',
+            backgroundColor: 'rgba(25, 99, 132, 0.25)',
             pointRadius: 5,
             pointBorderColor: 'rgba(25, 99, 132)',
             pointBackgroundColor: 'rgba(25, 99, 132)',
         },
+        {
+            label: label3,
+            data: valores3,
+            tension: 0.5,
+            fill : true,
+            borderColor: 'rgb(10, 10, 10)',
+            backgroundColor: 'rgb(10, 10, 10, 0)',
+            pointRadius: 5,
+            pointBorderColor: 'rgb(10, 10, 10)',
+            pointBackgroundColor: 'rgb(10, 10, 10)',
+        }
     ],
 };
 
