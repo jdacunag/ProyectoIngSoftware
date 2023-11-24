@@ -9,7 +9,7 @@ credentials = APIRouter()
 async def login(user: UpdateUser):
     foundUser = await getUser(user)
     if foundUser:
-        return 'Login successful'
+        return str(foundUser['_id'])
     return None
 @credentials.post('/register', response_model=UpdateUser)
 async def register(user: User):

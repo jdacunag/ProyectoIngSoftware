@@ -1,20 +1,19 @@
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
-import { useLocation } from 'wouter';
 import Card from '../components/Card';
 import Link from '../components/Link';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Input from '../components/input';
 import Title from '../components/title';
-//import useSession from '../hooks/useSession';
+import useSession from '../hooks/useSession';
 import style from './Login.module.css';
 
 
 export default function Login() {
-
-    const [, setLocation] = useLocation();
+    sessionStorage.removeItem('userId');
+    const {createSession} = useSession();
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
@@ -40,6 +39,8 @@ export default function Login() {
     
             if (res.ok) {
                 navigate('/home');
+                const jsonString = await res.text();
+                createSession(JSON.parse(jsonString))
             } else {
                 alert('No se pudo iniciar sesion. Asegurate que los datos sean correctos');
             }
