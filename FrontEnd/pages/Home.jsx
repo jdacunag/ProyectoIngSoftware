@@ -4,7 +4,6 @@ import style from './Home.module.css'
 import Title from '../components/title';
 import { faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import	NavbarSimple from '../components/Navbar'
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../Components/TopBar';

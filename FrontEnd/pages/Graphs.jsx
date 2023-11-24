@@ -1,4 +1,7 @@
-export default function Graphs() {
+export default function graphs (){
 
+    return(
 
+        <div></div>
+    )
 }
