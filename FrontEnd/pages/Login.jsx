@@ -8,7 +8,7 @@ import Button from '../components/Button';
 import Input from '../components/input';
 import Title from '../components/title';
 //import useSession from '../hooks/useSession';
-//import style from './Login.module.css';
+import style from './Login.module.css';
 
 
 export default function Login() {
@@ -29,7 +29,7 @@ export default function Login() {
         if (!username || !password) return;
 
         try {
-            const user = await userApi.login(username, password);
+           // const user = await userApi.login(username, password);
          //   createSession(user.id);
             setLocation('/projects');
         } catch (error) {
