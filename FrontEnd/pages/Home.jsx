@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import style from './Home.module.css'
 import Title from '../components/title';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faShop } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import	NavbarSimple from '../components/Navbar'
-
+import Button from '../components/Button';
 
 
 function Home() {
@@ -17,9 +17,6 @@ function Home() {
       .catch((error) => console.error('Error:', error));
   }, []);
   const [universities, setUniversities] = useState([]);
-  console.log(universities)
-
-  
 
   return (
     <div>
@@ -28,18 +25,18 @@ function Home() {
         <div>
                 <Title className={style.title}> 
 
-                  payasooooo
+                 Universidades Disponibles
                  </Title>
-                <button type="button" className={style.button}>
-                    <FontAwesomeIcon icon={faRightFromBracket} color="black" size="5x" />
-                </button>
             </div>
-        <div >
+        <div className={style.projects}>
         {universities.map((uni) => (
-              <Card  key={uni.id}>
-                <img src={uni.logo} alt="" />
+              <Card  key={uni.nombre}>
+                <img src={uni.logo} className={style.banner} />
                 <p>{uni.nombre}</p>
                 <p>{uni.email}</p>
+                <div>
+                <Button className={style.button} icon={faShop}>Comprar información</Button>
+                </div>
               </Card>
             ))}
         </div>
