@@ -29,9 +29,20 @@ export default function Login() {
         if (!username || !password) return;
 
         try {
-           // const user = await userApi.login(username, password);
-         //   createSession(user.id);
-            setLocation('/Home');
+            const res = await fetch('http://127.0.0.1:8000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+    
+            if (res.ok) {
+                console.log("LOGGED IN");
+                setLocation('/Home');
+            } else {
+                console.log("NOT LOGGED IN");
+            }
         } catch (error) {
             alert(error.message);
         }
